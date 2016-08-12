@@ -4,7 +4,7 @@
 			<a @click="showDropDown = !showDropDown" href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><b class="caret"></b></a>
 			<ul class="dropdown-menu" v-show="showDropDown">
 				<li>
-					<a href="javascript:void(0)" @click="signOut()"><i class="fa fa-fw fa-power-off"></i>退出登录</a>
+					<a href="javascript:void(0)" @click="signOut()"><i class="fa fa-fw fa-power-off"></i>Log Out</a>
 				</li>
 			</ul>
 		</li>
@@ -29,8 +29,8 @@
 
 .top-nav>li>a:hover,
 .top-nav>li>a:focus{
-	color: #fff;
-	background-color: #000;
+	color: #7f7f7f;
+	background-color: #fff;
 }
 .dropdown-menu {
 	display: block;

@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div id="wrapper">
-			<nav class="navbar navbar-inverse navbar-fixed-top">
+			<nav class="navbar navbar-fixed-top">
 				<logo></logo>
 				<nav-right></nav-right>
 				<nav-side></nav-side>
@@ -26,25 +26,25 @@
 	@import "./assets/less/top-area.less";
 </style>
 <script>
-import store from 'store';
+	import store from 'store';
 
-import Alert from './components/base/alert.vue';
-import Loading from './components/base/loading.vue';
-import Confirm from './components/base/confirm.vue';
-import Logo from './components/common/logo.vue';
-import NavRight from './components/common/nav-right.vue';
-import NavSilde from './components/common/nav-side.vue';
+	import Alert from './components/base/alert.vue';
+	import Loading from './components/base/loading.vue';
+	import Confirm from './components/base/confirm.vue';
+	import Logo from './components/common/logo.vue';
+	import NavRight from './components/common/nav-right.vue';
+	import NavSilde from './components/common/nav-side.vue';
 
-export default {
-	name: 'App',
-	store: store,
-	components: {
-		'logo': Logo,
-		'nav-right': NavRight,
-		'nav-side': NavSilde,
-		Alert,
-		Loading,
-		Confirm
-	}
-};
+	export default {
+		name: 'App',
+		store: store,
+		components: {
+			'logo': Logo,
+			'nav-right': NavRight,
+			'nav-side': NavSilde,
+			Alert,
+			Loading,
+			Confirm
+		}
+	};
 </script>

@@ -1,7 +1,16 @@
 <template>
 	<ul class="nav navbar-nav side-nav">
-		<li :class="{'active': isActive === 'project'}">
-			<a v-link="{name: 'Hello'}"><i class="fa fa-fw fa-cubes"></i>项目</a>
+		<li :class="{'active': isActive === 'home'}">
+			<a v-link="{name: 'Hello'}">Home</a>
+		</li>
+		<li :class="{'active': isActive === 'blog'}">
+			<a v-link="{name: 'Blog'}">Blog</a>
+		</li>
+		<li :class="{'active': isActive === 'code'}">
+			<a v-link="{name: 'Code'}">Code</a>
+		</li>
+		<li :class="{'active': isActive === 'contact'}">
+			<a v-link="{name: 'Contact'}">Contact</a>
 		</li>
 	</ul>
 </template>
@@ -16,18 +25,36 @@
 		border: none;
 		border-radius: 0;
 		overflow-y: auto;
-		background-color: #272727;
+		background-color: #fff;
 		bottom: 0;
 		overflow-x: hidden;
-		padding-bottom: 40px;
+		padding: 40px 0 40px 0;
+		margin-top:10px;
+		text-align:center;
 	}
 	.side-nav>li>a {
 		width: 180px;
+		color: #000;
 	}
-	.side-nav li a:hover,
+	.side-nav li a:hover {
+		outline: none;
+		background-color: #fff !important;
+		color: #FCD450;
+		border-left:3px solid #FCD450;
+	}
 	.side-nav li a:focus {
 		outline: none;
-		background-color: #000 !important;
+		background-color: #fff !important;
+		color: #FCD450;
+		border-left:3px solid #FCD450;
+		font-weight: 600;
+	}
+	.active {
+		outline: none;
+		background-color: #fff !important;
+		border-left:3px solid #FCD450;
+		font-weight: 600;
+		color: #FCD450 !important;
 	}
 }
 
