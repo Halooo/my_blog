@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<img class="logo" src="../../assets/img/logo.png">
+		<img class="logo" src="../../assets/img/uwaterloo_logo.png">
 	</div>
 </template>
 <style>
@@ -9,10 +9,11 @@ html {
 }
 
 body {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 100%;
+	/*display: flex;*/
+	/*align-items: center;*/
+	/*justify-content: center;*/
+	/*height: 100%;*/
+	padding-top:50px;
 }
 
 .logo {

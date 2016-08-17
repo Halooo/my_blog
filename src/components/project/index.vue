@@ -1,5 +1,5 @@
 <template>
-	<div>this is template body</div>
+	<h1>Welcome</h1>
 </template>
 <style>
 	body{
