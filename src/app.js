@@ -14,8 +14,10 @@ Vue.http.options.root = httpConfig[process.env]; // ENV from webpack plugins Def
 import App from './app.vue';
 import { routeConfig } from './config/route.config.js';
 
+import '../routes';
+
 const router = new Router({
-	saveScrollPosition: true,
+	saveScrollPosition: false,
 	linkActiveClass: 'active'
 });
 

@@ -25,13 +25,13 @@ webpackConfig = merge(baseWebpackConfig, {
 	},
 	output: {
 		path: baseConfig.build.assetsRoot,
-		filename: 'static/js/[name].[chunkhash].js',
-		chunkFilename: 'static/js/[id].[chunkhash].js'
+		filename: 'view/js/[name].[chunkhash].js',
+		chunkFilename: 'view/js/[id].[chunkhash].js'
 	},
 	plugins: [
 		new webpack.optimize.OccurenceOrderPlugin(),
 		// extract css string to file
-		new ExtractTextPlugin('static/css/[name].[contenthash].css'),
+		new ExtractTextPlugin('view/css/[name].[contenthash].css'),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'vendor',
 			minChunks: (module, count) => {

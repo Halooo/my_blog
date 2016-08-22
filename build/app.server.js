@@ -41,7 +41,7 @@ app.use(devMiddleware);
 app.use(hotMiddleware);
 
 const staticPath = path.join(baseConfig.build.assetsPublicPath, baseConfig.build.assetsSubDirectory);
-app.use(staticPath, express.static('./static'));
+app.use(staticPath, express.static('./view'));
 
 app.listen(port, (err) => {
 	if (err) {

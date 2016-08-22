@@ -9,7 +9,7 @@
 				</div>
 				<div class="col-sm-12 contact">
 					<label class="col-sm-3 legend">Github:</label>
-					<a class="col-sm-9 content" href="https://github.com/Halooo">https://github.com/Halooo</a>
+					<a class="col-sm-9 content" href="https://github.com/Halooo">{{info.github}}</a>
 				</div>
 				<div class="col-sm-12 contact">
 					<label class="col-sm-3 legend">WeChat:</label>
@@ -44,13 +44,23 @@
 		align-items: center;
 	}
 </style>
-<script>
+<script type="text/babel">
 	export default {
 		name: 'template',
 		data() {
 			return {
-				msg: 'This is a template'
+				info: []
 			};
+		},
+		ready() {
+			this.$http({
+				url: 'contact'
+			}).then((res) => {
+				return res.json();
+			}).then((res) => {
+				console.log(res);
+				this.info = res.contactInfo;
+			});
 		}
 	};
 </script>

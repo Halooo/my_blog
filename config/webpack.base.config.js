@@ -45,14 +45,14 @@ export default {
 			loader: 'url',
 			query: {
 				limit: 10000,
-				name: 'static/img/[name].[hash:7].[ext]'
+				name: 'view/img/[name].[hash:7].[ext]'
 			}
 		}, {
 			test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
 			loader: 'url',
 			query: {
 				limit: 10000,
-				name: 'static/fonts/[name].[hash:7].[ext]'
+				name: 'view/fonts/[name].[hash:7].[ext]'
 			}
 		}]
 	},
