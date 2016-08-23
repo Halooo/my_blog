@@ -25,7 +25,7 @@ var responseJSON = function (res, ret) {
 
 router.get('/getBlog', function(req, res, next) {
 	var _this = this;
-	orm.connect(opts, function (err, db) {
+	orm.connect(dbConfig.opts, function (err, db) {
 		if (err) throw err;
 		var Blog = db.define("blog", {
 			blogid: Number,
@@ -43,7 +43,7 @@ router.get('/getBlog', function(req, res, next) {
 });
 
 router.post('/postBlog', function(req, res, next){
-	orm.connect(opts, function (err, db) {
+	orm.connect(dbConfig.opts, function (err, db) {
 		if (err) throw err;
 		//define a table object
 		var Blog = db.define("blog", {
@@ -51,13 +51,16 @@ router.post('/postBlog', function(req, res, next){
 			blogtype: String,
 			blogcontent: String
 		});
-
 		//insert data
-		var param = req.query || req.params;
+		//var param = req.query || req.params;
+		var param = req.body;
+		console.log(param);
+
+		// ****following need to be changed based on "name" property on frontend page
 		Blog.create([{
-			blogid: param.blogid,
-			blogtype: param.blogtype,
-			blogcontent: param.blogcontent
+			blogid: param.id,
+			blogtype: param.type,
+			blogcontent: param.content
 		}],function(err, result) {
 			if(result) {
 				result = {
@@ -67,21 +70,6 @@ router.post('/postBlog', function(req, res, next){
 			}
 			responseJSON(res, result);
 		});
-
-		//search data
-		User.find({name:'Jane'}, function (err, User) {
-			console.log("User found: ", User.length);
-			console.log("User name: ", User[0].name);
-			console.log("User age : ", User[0].age);
-			/*
-			 //update data
-			 User[1].age=19
-			 User[1].save(function (err) {
-			 // err.msg = "under-age";
-			 console.log("update successfully!");
-			 });*/
-		});
-
 	});
 });
 
@@ -94,7 +82,7 @@ router.delete('/delBlog', function(req, res, next) {
 			blogtype: String,
 			blogcontent: String
 		});
-
+		console.log(Blog);
 		// delete data
 		var param = req.query || req.params;
 		Blog[0].remove(function(err){
