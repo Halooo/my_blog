@@ -46,7 +46,7 @@
 </style>
 <script type="text/babel">
 	export default {
-		name: 'template',
+		name: 'contact',
 		data() {
 			return {
 				info: []

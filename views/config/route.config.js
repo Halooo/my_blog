@@ -9,12 +9,16 @@ export const routeConfig = (router) => {
 			component: require('../components/contents/hello.vue')
 		},
 		'/blog': {
-			name: 'Blog',
-			component: require('../components/contents/blog.vue'),
+			// name: 'Blog',
+			component: require('../components/contents/index.vue'),
 			subRoutes: {
 				'/detail/:id': {
-					name: 'detailProject',
-					component: require('../components/contents/blogContent/detail.vue')
+					name: 'detailBlog',
+					component: require('../components/contents/detail.vue')
+				},
+				'/list': {
+					name: 'listBlog',
+					component: require('../components/contents/blog.vue')
 				}
 			}
 		},

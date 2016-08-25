@@ -15,7 +15,7 @@ var ejs = require('ejs');
 var lactate = require('lactate');
 
 var routes = require('./routes/index');
-var users = require('./routes/blog');
+var blog = require('./routes/blog');
 var contact = require('./routes/contact');
 
 var app = express();
@@ -35,7 +35,8 @@ console.log(staticdir);
 app.use(express.static(staticdir));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/blog', blog);
+app.use('/blog/detail', blog);
 app.use('/contact', contact);
 
 // app.use(lactate.static(__dirname + '/static'));

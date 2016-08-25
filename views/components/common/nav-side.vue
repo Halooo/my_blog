@@ -4,7 +4,7 @@
 			<a v-link="{name: 'Hello'}">Home</a>
 		</li>
 		<li :class="{'active': isActive === 'blog'}">
-			<a v-link="{name: 'Blog'}">Blog</a>
+			<a v-link="{name: 'listBlog'}">Blog</a>
 		</li>
 		<li :class="{'active': isActive === 'code'}">
 			<a v-link="{name: 'Code'}">Code</a>
@@ -42,19 +42,22 @@
 		color: #FCD450;
 		border-left:3px solid #FCD450;
 	}
-	.side-nav li a:focus {
-		outline: none;
-		background-color: #fff !important;
-		color: #FCD450;
-		border-left:3px solid #FCD450;
-		font-weight: 600;
-	}
+	/*.side-nav li a:focus {*/
+		/*outline: none;*/
+		/*background-color: #fff !important;*/
+		/*color: #FCD450;*/
+		/*border-left:3px solid #FCD450;*/
+		/*font-weight: 600;*/
+	/*}*/
 	.active {
 		outline: none;
 		background-color: #fff !important;
 		border-left:3px solid #FCD450;
 		font-weight: 600;
 		color: #FCD450 !important;
+	}
+	li.active {
+		border-left:none !important;
 	}
 }
 

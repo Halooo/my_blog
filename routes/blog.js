@@ -23,21 +23,52 @@ var responseJSON = function (res, ret) {
 	}
 };
 
-router.get('/getBlog', function(req, res, next) {
+router.get('/blogDetail', function(req, res, next) {
 	var _this = this;
 	orm.connect(dbConfig.opts, function (err, db) {
 		if (err) throw err;
 		var Blog = db.define("blog", {
 			blogid: Number,
 			blogtype: String,
-			blogcontent: String
+			blogcontent: String,
+			blogtitle: String,
+			blogdesc: String,
+			date: Number
+		}, {
+			id: "blogid"
 		});
+
 
 		var param = req.query || req.params;
 		Blog.find({
-			blogid: param.blogid
+			blogid: param.id
 		}, function (err, blog) {
-			res(blog.blogcontent);
+			res.json(blog);
+		});
+	})
+});
+
+router.get('/blogList', function(req, res, next) {
+	var _this = this;
+	orm.connect(dbConfig.opts, function (err, db) {
+		if (err) throw err;
+		var Blog = db.define("blog", {
+			blogid: Number,
+			blogtype: String,
+			blogcontent: String,
+			blogtitle: String,
+			blogdesc: String,
+			date: Number
+		}, {
+			id: "blogid"
+		});
+
+
+		var param = req.query || req.params;
+		Blog.find({
+			
+		}, function (err, blog) {
+			res.json(blog);
 		});
 	})
 });
@@ -85,7 +116,12 @@ router.delete('/delBlog', function(req, res, next) {
 		// delete data
 		var param = req.query || req.params;
 		Blog[0].remove(function(err){
-			console.log("delete successfully!")
+			if (err) {
+				responseJSON(res, result);
+			}
+			res.json({
+				msg: "delete successfully!"
+			});
 		})
 	});
 });

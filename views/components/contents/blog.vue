@@ -8,17 +8,11 @@
 		</div>
 	</div>
 
-	<div>
+	<div v-for="item in blogInfo">
 		<div>
-			<h4>ABC</h4>
-			<p class="datedisp">Aug 25, 2016</p>
-			<p>hello, this is a desc</p>
-			<hr>
-		</div>
-		<div>
-			<h4>ABC</h4>
-			<p class="datedisp">Aug 25, 2016</p>
-			<p>hello, this is a desc</p>
+			<h4><a class="listItem" href="javascript:void(0)" v-link="{name: 'detailBlog', params: {id: item.blogid}}">{{item.blogtitle}}</a></h4>
+			<p class="datedisp">{{item.date}}</p>
+			<p>{{item.blogdesc}}</p>
 			<hr>
 		</div>
 	</div>
@@ -27,19 +21,39 @@
     body{
         background-color: #fff;
     }
-
 	h3 {
 		font-weight:600;
-		color: #fcc546;
+	}
+	a {
+		color:black;
+	}
+	a.listItem:hover{
+		color: black;
+		text-decoration: none;
+		outline: 0;
+		border-bottom: 2px solid #FCD450;
 	}
 </style>
-<script>
+<script type="text/babel">
 	export default {
-		name: 'Blog',
+		name: 'listBlog',
 		data() {
 			return {
-				msg: 'blogs'
+				blogInfo: []
 			};
+		},
+		ready() {
+			this.$http({
+				url: 'blog/blogList',
+				params: {
+					id: 0
+				}
+			}).then((res) => {
+				return res.json();
+			}).then((res) => {
+				console.log(res[1]);
+				this.blogInfo = res;
+			});
 		}
 	};
 </script>
