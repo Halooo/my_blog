@@ -9,7 +9,7 @@ var router = express.Router();
 
 //var mysql = require('mysql');
 var orm = require('orm');
-var dbConfig = require('./db/dbConfig');
+var dbConfig = require('../db/dbConfig');
 
 var responseJSON = function (res, ret) {
 	if(typeof ret === 'undefined') {
@@ -22,3 +22,24 @@ var responseJSON = function (res, ret) {
 	}
 };
 
+router.get('/getContactInfo', function(req, res, next) {
+	orm.connect(dbConfig.opts, function (err, db) {
+		if (err) throw err;
+		var Contact = db.define("contact", {
+			id: Number,
+			github: String,
+			email: String,
+			wechat: String,
+			tweet: String
+		});
+
+		// var param = req.query || req.params;
+		Contact.find({
+			id: 0 // param.id
+		}, function (err, contact) {
+			res.json(contact);
+		});
+	})
+});
+
+module.exports = router;

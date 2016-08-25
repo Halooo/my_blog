@@ -1,5 +1,5 @@
 export default {
-	localdev: 'http://localhost:1234',
+	localdev: 'http://localhost:8988',
 	localtest: '',
 	development: '',
 	test: '',

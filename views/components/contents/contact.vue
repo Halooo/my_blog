@@ -5,7 +5,7 @@
 			<fieldset>
 				<div class="col-sm-12 contact">
 					<label class="col-sm-3 legend">E-mail:</label>
-					<div class="col-sm-9 content">haosun0226#gmail.com (please change # to @)</div>
+					<div class="col-sm-9 content">{{info.email}} (pleace change # to @)</div>
 				</div>
 				<div class="col-sm-12 contact">
 					<label class="col-sm-3 legend">Github:</label>
@@ -13,11 +13,11 @@
 				</div>
 				<div class="col-sm-12 contact">
 					<label class="col-sm-3 legend">WeChat:</label>
-					<div class="col-sm-9 content">haosun0226</div>
+					<div class="col-sm-9 content">{{info.wechat}}</div>
 				</div>
 				<div class="col-sm-12 contact">
 					<label class="col-sm-3 legend">Tweet:</label>
-					<div class="col-sm-9 content">@haosun0226</div>
+					<div class="col-sm-9 content">{{info.tweet}}</div>
 				</div>
 			</fieldset>
 		</div>
@@ -54,12 +54,12 @@
 		},
 		ready() {
 			this.$http({
-				url: 'contact'
+				url: 'contact/getContactInfo'
 			}).then((res) => {
 				return res.json();
 			}).then((res) => {
 				console.log(res);
-				this.info = res.contactInfo;
+				this.info = res[0];
 			});
 		}
 	};

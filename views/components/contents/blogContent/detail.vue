@@ -1,5 +1,5 @@
 <template>
-    <div>this is template body</div>
+    <div>{{msg}}</div>
 </template>
 <style>
     body{
@@ -8,10 +8,10 @@
 </style>
 <script>
 	export default {
-		name: 'Blog',
+		name: 'template',
 		data() {
 			return {
-				msg: 'blogs'
+				msg: 'This is a template'
 			};
 		}
 	};

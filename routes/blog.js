@@ -8,7 +8,7 @@ var router = express.Router();
 
 //var mysql = require('mysql');
 var orm = require('orm');
-var dbConfig = require('./db/dbConfig');
+var dbConfig = require('../db/dbConfig');
 // used to use 'mysql', but now unused
 // var sqlConfig = require('./db/sqlConfig');
 // var pool = mysql.createPool( dbConfig.mysql );
@@ -52,7 +52,6 @@ router.post('/postBlog', function(req, res, next){
 			blogcontent: String
 		});
 		//insert data
-		//var param = req.query || req.params;
 		var param = req.body;
 		console.log(param);
 

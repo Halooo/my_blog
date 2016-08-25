@@ -6,11 +6,13 @@ import baseConfig from './base.config.js';
 
 import env from './env.config.js';
 
+import fs from 'fs';
+
 const rootPath = path.join(__dirname, '../');
 
 export default {
 	entry: {
-		app: './src/app.js'
+		app: './views/app.js'
 	},
 	output: {
 		path: baseConfig.build.assetsRoot,
@@ -59,9 +61,9 @@ export default {
 	resolve: {
 		extensions: ['', '.js', '.vue'],
 		alias: {
-			utils: path.join(rootPath, './src/util/'),
-			store: path.join(rootPath, './src/vuex/'),
-			actions: path.join(rootPath, './src/vuex/actions/')
+			utils: path.join(rootPath, './views/util/'),
+			store: path.join(rootPath, './views/vuex/'),
+			actions: path.join(rootPath, './views/vuex/actions/')
 		}
 	},
 	eslint: {
