@@ -24,53 +24,19 @@ var responseJSON = function (res, ret) {
 };
 
 router.get('/blogDetail', function(req, res, next) {
-	var _this = this;
-	orm.connect(dbConfig.opts, function (err, db) {
-		if (err) throw err;
-		var Blog = db.define("blog", {
-			blogid: Number,
-			blogtype: String,
-			blogcontent: String,
-			blogtitle: String,
-			blogdesc: String,
-			date: Number
-		}, {
-			id: "blogid"
-		});
-
-
-		var param = req.query || req.params;
-		Blog.find({
-			blogid: param.id
-		}, function (err, blog) {
-			res.json(blog);
-		});
-	})
+	var param = req.query || req.params;
+	req.models.Blog.find({
+		blogid: param.id
+	}, function (err, blog) {
+		res.json(blog);
+	});
 });
 
 router.get('/blogList', function(req, res, next) {
-	var _this = this;
-	orm.connect(dbConfig.opts, function (err, db) {
-		if (err) throw err;
-		var Blog = db.define("blog", {
-			blogid: Number,
-			blogtype: String,
-			blogcontent: String,
-			blogtitle: String,
-			blogdesc: String,
-			date: Number
-		}, {
-			id: "blogid"
-		});
-
-
-		var param = req.query || req.params;
-		Blog.find({
-			
-		}, function (err, blog) {
-			res.json(blog);
-		});
-	})
+	req.models.Blog.find({
+	}, function (err, blog) {
+		res.json(blog);
+	});
 });
 
 router.post('/postBlog', function(req, res, next){

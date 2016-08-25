@@ -13,6 +13,7 @@ var debug = require('debug')('mysqldemo:server');
 var http = require('http');
 var ejs = require('ejs');
 var lactate = require('lactate');
+var orm = require('orm');
 
 var routes = require('./routes/index');
 var blog = require('./routes/blog');
@@ -34,9 +35,42 @@ var staticdir = path.join(__dirname, 'dist');
 console.log(staticdir);
 app.use(express.static(staticdir));
 
+//
+// var ormConfig = require('../db/ormConfig.js');
+var dbConfig = require('./db/dbConfig');
+app.use(orm.express(dbConfig.opts, {
+	define: function (db, models, next) {
+		models.Blog = db.define("blog", {
+			blogid: Number,
+			blogtype: String,
+			blogcontent: String,
+			blogtitle: String,
+			blogdesc: String,
+			date: Number
+		}, {
+			id: "blogid"
+		});
+		next();
+	}
+}));
+
+app.use(orm.express(dbConfig.opts, {
+	define: function (db, models, next) {
+		models.Contact = db.define("contact", {
+			id: Number,
+			github: String,
+			email: String,
+			wechat: String,
+			tweet: String
+		});
+		next();
+	}
+}));
+//
+
 app.use('/', routes);
 app.use('/blog', blog);
-app.use('/blog/detail', blog);
+// app.use('/blog/detail', blog);
 app.use('/contact', contact);
 
 // app.use(lactate.static(__dirname + '/static'));

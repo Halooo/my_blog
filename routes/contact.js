@@ -23,23 +23,31 @@ var responseJSON = function (res, ret) {
 };
 
 router.get('/getContactInfo', function(req, res, next) {
-	orm.connect(dbConfig.opts, function (err, db) {
-		if (err) throw err;
-		var Contact = db.define("contact", {
-			id: Number,
-			github: String,
-			email: String,
-			wechat: String,
-			tweet: String
-		});
-
-		// var param = req.query || req.params;
-		Contact.find({
-			id: 0 // param.id
-		}, function (err, contact) {
-			res.json(contact);
-		});
-	})
+	req.models.Contact.find({
+		id: 0 // param.id
+	}, function (err, contact) {
+		res.json(contact);
+	});
 });
+
+// router.get('/getContactInfo', function(req, res, next) {
+// 	orm.connect(dbConfig.opts, function (err, db) {
+// 		if (err) throw err;
+// 		var Contact = db.define("contact", {
+// 			id: Number,
+// 			github: String,
+// 			email: String,
+// 			wechat: String,
+// 			tweet: String
+// 		});
+//
+// 		// var param = req.query || req.params;
+// 		Contact.find({
+// 			id: 0 // param.id
+// 		}, function (err, contact) {
+// 			res.json(contact);
+// 		});
+// 	})
+// });
 
 module.exports = router;
