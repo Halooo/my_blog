@@ -11,7 +11,8 @@
 			<div>
 				<h4>
 					<a class="listItem" href="javascript:void(0)" v-link="">ABC</a>
-					(<a class="listItem" href="javascript:void(0)" v-link="">source</a>)
+					(<a class="listItem"
+						@click="openNewWindow()">source</a>)
 				</h4>
 				<p>123</p>
 				<hr>
@@ -31,13 +32,25 @@
 		cursor:hand;
 	}
 </style>
-<script>
+<script type="text/babel">
 	export default {
 		name: 'code',
 		data() {
 			return {
-
+				codeInfo: []
 			};
+		},
+		ready() {
+			this.$http({
+				url: 'code/codeList',
+				params: {
+				}
+			}).then((res) => {
+				return res.json();
+			}).then((res) => {
+				this.codeInfo = res;
+				console.log(this.codeInfo);
+			});
 		}
 	};
 </script>

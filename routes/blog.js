@@ -8,7 +8,7 @@ var router = express.Router();
 
 //var mysql = require('mysql');
 var orm = require('orm');
-var dbConfig = require('../db/dbConfig');
+// var dbConfig = require('../db/dbConfig');
 // used to use 'mysql', but now unused
 // var sqlConfig = require('./db/sqlConfig');
 // var pool = mysql.createPool( dbConfig.mysql );
@@ -38,7 +38,7 @@ router.get('/blogList', function(req, res, next) {
 		res.json(blog);
 	});
 });
-
+/*
 router.post('/postBlog', function(req, res, next){
 	orm.connect(dbConfig.opts, function (err, db) {
 		if (err) throw err;
@@ -91,6 +91,7 @@ router.delete('/delBlog', function(req, res, next) {
 		})
 	});
 });
+*/
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
